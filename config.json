@@ -1,0 +1,45 @@
+{
+  "male_to_female": 0.5,
+  "category_frequency": [[9999100, "asian"], [100, "african"], [100, "european"]],
+  "categories": {
+    "asian": {
+      "skin_gradient": ["#f4dcc4", "#edd8ae", "#edd8ae", "#dac8a8"],
+      "hair_gradient": {"0": "#000000", "0.6": "#28170b", "0.85": "#3c2210", "0.97": "#784421", "1": "#c8ab37"},
+      "physical_descriptors": {"chin": [0, 0], "facial_hair": 0.05},
+      "hairstyle": {
+        "female": [
+          [150, ["straight_fringe", [[100, "loose_straight"], [50, "bun"], [50, "spiky_back"]]] ],
+          [100, ["tied_fringe", [[100, "loose_straight"], [50, "bun"], [50, "spiky_back"]]] ],
+          [150, ["straight_fringe2", [[100, "loose_straight"], [50, "bun"], [50, "spiky_back"]]] ],
+          [150, ["straight_fringe3", [[100, "loose_straight"], [50, "bun"], [50, "spiky_back"]]] ],
+          [100, ["spiky_fringe", [[20, "loose_straight"], [100, "spiky_back"]]] ]
+        ],
+        "male": [
+          [100, ["straight_fringe3", [[100, "short_straight"]]]]
+        ]
+      }
+    },
+    "european": {
+      "skin_gradient": ["#e8c9c9", "#f4d7ce", "#ffc8ce", "#ffe2db"],
+      "hair_gradient": ["#28170b", "#784421", "#926a45", "#ffdd55"],
+      "physical_descriptors": {"facial_hair": 0.4}
+    },
+    "african": {
+      "skin_gradient": ["#605143", "#775537", "#8f5a2c", "#bb8555"],
+      "hair_gradient": ["#000000", "#28170b"],
+      "physical_descriptors": {"facial_hair": 0.4}
+    }
+  },
+  "templates": {
+    "portrait": "./templates/portrait.svg",
+    "straight_fringe": {"file": "./templates/fhair_1.svg"},
+    "straight_fringe2": {"file": "./templates/fhair_3.svg"},
+    "straight_fringe3": {"file": "./templates/fhair_5.svg"},
+    "tied_fringe": {"file": "./templates/fhair_2.svg"},
+    "spiky_fringe": {"file": "./templates/fhair_4.svg"},
+    "loose_straight": {"file": "./templates/bhair_1.svg"},
+    "short_straight": {"file": "./templates/bhair_4.svg"},
+    "bun": {"file": "./templates/bhair_2.svg"},
+    "spiky_back": {"file": "./templates/bhair_3.svg"}
+  }
+}
