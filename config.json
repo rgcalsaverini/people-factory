@@ -1,6 +1,6 @@
 {
-  "male_to_female": 0.5,
-  "category_frequency": [[9999100, "asian"], [100, "african"], [100, "european"]],
+  "male_to_female": 0,
+  "category_frequency": [[0, "asian"], [0, "african"], [100, "european"]],
   "categories": {
     "asian": {
       "skin_gradient": ["#f4dcc4", "#edd8ae", "#edd8ae", "#dac8a8"],
@@ -15,14 +15,24 @@
           [100, ["spiky_fringe", [[20, "loose_straight"], [100, "spiky_back"]]] ]
         ],
         "male": [
-          [100, ["straight_fringe3", [[100, "short_straight"]]]]
+          [100, ["straight_fringe3", [[100, "short_straight"]]]],
+          [100, ["buzz_cut", [[100, null]]]],
+          [100, ["army", [[100, null]]]],
+          [100, ["short_sides", [[100, null]]]],
+          [100, ["pompadour", [[100, null]]]]
         ]
       }
     },
     "european": {
       "skin_gradient": ["#e8c9c9", "#f4d7ce", "#ffc8ce", "#ffe2db"],
       "hair_gradient": ["#28170b", "#784421", "#926a45", "#ffdd55"],
-      "physical_descriptors": {"facial_hair": 0.4}
+      "physical_descriptors": {"facial_hair": 0.4},
+      "hairstyle": {
+        "female": [
+          [100, ["curly_fringe", [[100, "curly_back"]]]]
+        ],
+        "male": []
+      }
     },
     "african": {
       "skin_gradient": ["#605143", "#775537", "#8f5a2c", "#bb8555"],
@@ -37,9 +47,15 @@
     "straight_fringe3": {"file": "./templates/fhair_5.svg"},
     "tied_fringe": {"file": "./templates/fhair_2.svg"},
     "spiky_fringe": {"file": "./templates/fhair_4.svg"},
+    "buzz_cut": {"file": "./templates/fhair_6.svg"},
+    "army": {"file": "./templates/fhair_7.svg"},
+    "short_sides": {"file": "./templates/fhair_8.svg"},
+    "pompadour": {"file": "./templates/fhair_9.svg"},
+    "curly_fringe": {"file": "./templates/fhair_10.svg"},
     "loose_straight": {"file": "./templates/bhair_1.svg"},
     "short_straight": {"file": "./templates/bhair_4.svg"},
     "bun": {"file": "./templates/bhair_2.svg"},
-    "spiky_back": {"file": "./templates/bhair_3.svg"}
+    "spiky_back": {"file": "./templates/bhair_3.svg"},
+    "curly_back": {"file": "./templates/bhair_5.svg"}
   }
 }
