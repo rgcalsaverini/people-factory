@@ -1,5 +1,6 @@
 import random
 
+
 def roulette_random(pairs):
     """
     Return a random item from a weighted pair list

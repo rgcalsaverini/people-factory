@@ -7,6 +7,11 @@ from .miscutils import roulette_random
 from .svg import TemplateFile
 
 
+class ResourcePool(object):
+    def __init__(self, config):
+        self.config = config
+
+
 class Generator(object):
     def __init__(self, male_to_female=None, category_frequency=None, categories=None):
         self.male_to_female = male_to_female

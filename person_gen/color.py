@@ -1,5 +1,6 @@
-from numpy import random
 import math
+
+from numpy import random
 
 
 def upper_bound_value(value_list, value):
@@ -58,7 +59,7 @@ def from_gradient(gradient, offset=None, random_function=None, mixer=None):
         if len(gradient) == 2:
             idx_a, idx_b = 0, 1
         else:
-            color_length = 1 / (len(gradient) - 1)
+            color_length = 1.0 / (len(gradient) - 1)
             offset_by_length = offset / color_length
             idx_b = math.ceil(offset_by_length) or 1
             idx_a = idx_b - 1
@@ -70,7 +71,8 @@ def from_gradient(gradient, offset=None, random_function=None, mixer=None):
             return constrain_col(gradient[0])
         if len(gradient) == 2:
             idx_a, idx_b = offset_list[0], offset_list[-1]
-            offset = constrain_pct((offset - offset_list[0]) / (offset_list[1] - offset_list[0]))
+            offset = constrain_pct(
+                (offset - offset_list[0]) / (offset_list[1] - offset_list[0]))
         else:
             idx_b = upper_bound_value(offset_list, offset)
             idx_a = offset_list[offset_list.index(idx_b) - 1]
@@ -78,12 +80,13 @@ def from_gradient(gradient, offset=None, random_function=None, mixer=None):
     else:
         raise ('Invalid type {} for gradient'.format(type(gradient)))
 
-    return mix_colors(gradient[idx_a], gradient[idx_b], offset)
+    return mix_colors(gradient[int(idx_a)], gradient[int(idx_b)], offset)
 
 
 def mix_colors(color_a, color_b, offset):
     """Mix two colors given an offset. 0 offset means 100% color a and 1 means 100% color b"""
-    return constrain_col([color_a[i] * (1 - offset) + color_b[i] * offset for i in range(3)])
+    return constrain_col(
+        [color_a[i] * (1 - offset) + color_b[i] * offset for i in range(3)])
 
 
 def hex2rgb(value):

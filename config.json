@@ -1,6 +1,6 @@
 {
-  "male_to_female": 0,
-  "category_frequency": [[0, "asian"], [0, "african"], [100, "european"]],
+  "male_to_female": 0.5,
+  "category_frequency": [[100, "asian"], [0, "african"], [100, "european"]],
   "categories": {
     "asian": {
       "skin_gradient": ["#f4dcc4", "#edd8ae", "#edd8ae", "#dac8a8"],
@@ -12,7 +12,8 @@
           [100, ["tied_fringe", [[100, "loose_straight"], [50, "bun"], [50, "spiky_back"]]] ],
           [150, ["straight_fringe2", [[100, "loose_straight"], [50, "bun"], [50, "spiky_back"]]] ],
           [150, ["straight_fringe3", [[100, "loose_straight"], [50, "bun"], [50, "spiky_back"]]] ],
-          [100, ["spiky_fringe", [[20, "loose_straight"], [100, "spiky_back"]]] ]
+          [100, ["spiky_fringe", [[20, "loose_straight"], [100, "spiky_back"]]] ],
+          [50, ["curly_fringe", [[50, "loose_straight"], [50, "spiky_back"], [50, "curly_back"]]] ]
         ],
         "male": [
           [100, ["straight_fringe3", [[100, "short_straight"]]]],
@@ -29,9 +30,11 @@
       "physical_descriptors": {"facial_hair": 0.4},
       "hairstyle": {
         "female": [
-          [100, ["curly_fringe", [[100, "curly_back"]]]]
+          [100, ["curly_fringe", [[50, "bun"], [100, "curly_back"], [50, "loose_straight"], [50, "spiky_back"]]]],
+          [50, ["spiky_fringe", [[100, "loose_straight"], [100, "spiky_back"], [100, "curly_back"]]] ],
+          [50, ["straight_fringe", [[100, "loose_straight"], [50, "bun"], [50, "spiky_back"]]] ]
         ],
-        "male": []
+        "male": [[100, [null, [[100, null]]]]]
       }
     },
     "african": {

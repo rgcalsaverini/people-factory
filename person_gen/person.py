@@ -58,6 +58,8 @@ class PersonCategory(object):
         descriptors['front_hair'] = self.templates[front_hair_id]['file'] if front_hair_id else None
         descriptors['back_hair'] = self.templates[back_hair_id]['file'] if back_hair_id else None
 
+        print(self.categ_id, self.skin_gradient)
+
         return Person(
             descriptors=descriptors,
             gender=gender,
