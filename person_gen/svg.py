@@ -62,8 +62,10 @@ def path_differences(base_path, comp_path):
     differences = dict()
 
     if len(base_path) != len(comp_path):
+        msg = "Paths must have same number of segments, got {} (base) and {}"
         raise ValueError(
-            "Paths must have same number of segments, got {} and {}".format(len(base_path), len(comp_path)))
+            msg.format( len(base_path), len(comp_path))
+        )
 
     for idx in range(len(base_path)):
         segment_1 = base_path[idx]
