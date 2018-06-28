@@ -1,24 +1,31 @@
 from person_gen.descriptors import PersonCategory, Gradient, \
     PhysicalDescriptors
-from sample_config.base import templates, default_descriptors
+from sample_config.base import templates, default_descriptors, clothing
 
 asian_hair = {
-    '0': '#000000',
-    '0.6': '#28170b',
-    '0.85': '#3c2210',
-    '0.97': '#784421',
+    0: '#000000',
+    0.6: '#28170b',
+    0.85: '#3c2210',
+    0.97: '#784421',
+}
+iris = {
+    0.7: '#2b1100',
+    0.9: '#2b1100',
+    1.0: '#845531',
 }
 
 asian = PersonCategory(
     'asian',
     skin_col=Gradient(['#f4dcc4', '#edd8ae', '#edd8ae', '#dac8a8']),
     hair_col=Gradient(asian_hair),
+    iris_col=Gradient(asian_hair),
     physical=PhysicalDescriptors(
         default_descriptors,
         chin=0,
         eye_size=(0.9, 0.2),
     ),
     templates=templates,
+    clothing=clothing,
 )
 
 basic_back = [

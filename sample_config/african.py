@@ -1,13 +1,23 @@
 from person_gen.descriptors import PersonCategory, Gradient, \
     PhysicalDescriptors
-from sample_config.base import templates, default_descriptors
+from sample_config.base import templates, default_descriptors, clothing
+
+eye_colors = {
+    0.60: '#000000',
+    0.80: '#2b1100',
+    0.95: '#845531',
+    0.98: '#a06c2c',
+    1.0: '#65b98c',
+}
 
 african = PersonCategory(
     'african',
     skin_col=Gradient(["#605143", "#775537", "#8f5a2c", "#bb8555"]),
     hair_col=Gradient(["#000000", "#28170b"]),
+    iris_col=Gradient(eye_colors),
     physical=PhysicalDescriptors(default_descriptors),
     templates=templates,
+    clothing=clothing
 )
 
 african.hair.female.add(100, 'curly_fringe', [

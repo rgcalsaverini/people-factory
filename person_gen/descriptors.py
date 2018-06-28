@@ -98,55 +98,136 @@ class Hairstyles(object):
         return front_id, back_id if back_id else None
 
 
+class FacialHair(object):
+    def __init__(self, probability):
+        self.values = []
+        self.probability = probability
+
+    def add(self, weight, style):
+        self.values.append([weight, style])
+
+    def random(self):
+        if not self.values or uniform_random(0, 1) > self.probability:
+            return None
+        style_id = roulette_random(self.values)
+        return style_id
+
+
+class Wardrobe(object):
+    def __init__(self, items):
+        self.items = items
+
+    def _items_matching(self, label, items):
+        return [i for i in items if label in i[1].get('labels', [])]
+
+    def random(self, has=None):
+        if has:
+            match_all = [has] if isinstance(has, str) else has
+            valid = self.items
+            for req in match_all:
+                valid = self._items_matching(req, valid)
+        else:
+            valid = self.items
+        if not valid:
+            return None, None
+        item = roulette_random(valid)
+        fill = {}
+        for idx, color in enumerate(item.get('colors', [])):
+            fill['col_%d' % (idx + 1)] = color.random()
+        return item['tid'], fill
+
+
 class PersonCategory(object):
     def __init__(self, category_name, skin_col=None, hair_col=None,
-                 physical=None, templates=None, gender_ratio=None):
+                 iris_col=None, physical=None, templates=None,
+                 gender_ratio=None, clothing=None, facial_hair=0.33):
         self.category_name = category_name
         self.skin_col = skin_col
         self.hair_col = hair_col
+        self.iris_col = iris_col
         self.physical = physical
         self.hair = GenderGroup(Hairstyles)
         self.templates = templates
         self.gender_ratio = gender_ratio or 0.5
+        self.clothing = Wardrobe(clothing)
+        self.facial_hair = FacialHair(facial_hair)
 
     def _random_gender(self):
         if uniform_random(0, 1) < self.gender_ratio:
             return 'male'
         return 'female'
 
+    def _generate_clothing(self, gender):
+        templates = []
+        colors = []
+        accessories = {
+            'ear': 0.6,
+            'eye': 0.3,
+        }
+
+        clothing_id, clothing_col = self.clothing.random([gender, 'basic'])
+        templates.append(self.templates[clothing_id])
+        colors.append(clothing_col)
+
+        for label, prob in accessories.items():
+            if uniform_random(0, 1) < prob:
+                item_id, item_col = self.clothing.random([gender, label])
+                if item_id:
+                    templates.append(self.templates[item_id])
+                    colors.append(item_col)
+
+        return templates, colors
+
     def random(self):
         gender = self._random_gender()
         skin_col = self.skin_col.random()
         hair_col = self.hair_col.random()
+        iris_col = self.iris_col.random()
         hair_ids = getattr(self.hair, gender).random()
         hair = apply_map(hair_ids, self.templates)
+        clothing, clothing_col = self._generate_clothing(gender)
         physical = self.physical.random()
         portrait = self.templates['portrait']
-        return Person(gender, skin_col, hair_col, hair, physical, portrait)
+        facial_hair = None
+        if gender == 'male':
+            fhair_id = self.facial_hair.random()
+            facial_hair = self.templates[fhair_id] if fhair_id else None
+        return Person(gender, skin_col, hair_col, iris_col, clothing_col,
+                      hair, clothing, physical, facial_hair, portrait)
 
 
 class Person(object):
-    def __init__(self, gender, skin_col, hair_col, hair, physical, portrait):
+    def __init__(self, gender, skin_col, hair_col, iris_col, clothing_col,
+                 hair, clothing, physical, facial_hair, portrait):
         self.gender = gender
         self.skin_col = skin_col
         self.hair_col = hair_col
+        self.iris_col = iris_col
         self.hair_templates = hair
         self.physical = physical
         self._portrait = TemplateFile(portrait)
+        self.clothing = clothing
+        self.clothing_col = clothing_col
+        self.facial_hair = facial_hair
 
     def make_portrait(self):
         self._portrait.apply_transitions(self.physical)
-        self._inlay_template(self.hair_templates[0], 8)
-        self._inlay_template(self.hair_templates[1], 1)
+        hair_color = {'hair': self.hair_col}
+        self._inlay_template(self.hair_templates[0], 9, hair_color)
+        self._inlay_template(self.hair_templates[1], 1, hair_color)
+        if self.facial_hair:
+            self._inlay_template(self.facial_hair, 9, hair_color)
+        for idx, clothing in enumerate(self.clothing):
+            self._inlay_template(clothing, 99, self.clothing_col[idx])
 
-    def _inlay_template(self, template, position):
+    def _inlay_template(self, template, position, colors=None):
         if template is None:
             return
         template = TemplateFile(template)
         template.load()
         template.apply_transitions(self.physical)
         paths = template.get_paths()
-        fills = template.get_attributes({'hair': self.hair_col})
+        fills = template.get_attributes(colors or {})
         self._portrait.inlay(position, paths, fills)
 
     def export_svg(self, filename):
@@ -155,5 +236,7 @@ class Person(object):
             'skin': self.skin_col,
             'dark_skin': transform_color(self.skin_col, val=-0.2),
             'body': transform_color(self.skin_col, val=-0.1),
+            'iris': self.iris_col,
         })
-        wsvg(paths, attributes=attributes, filename=filename, margin_size=0)
+        wsvg(paths, attributes=attributes, filename=filename, margin_size=0,
+             dimensions=(600, 600))
