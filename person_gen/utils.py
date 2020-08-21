@@ -2,21 +2,22 @@ import random
 
 
 def roulette_random(pairs):
-    """
-    Return a random item from a weighted pair list
-    :param pairs: A list of (weight, item) pairs, where weight is an integer and item is anything
-    :return: A random item
-    """
+    if not pairs:
+        return None
     total = sum(pair[0] for pair in pairs)
+    if not total:
+        return None
     random_pick = random.randrange(total)
     for (weight, item) in pairs:
         random_pick -= weight
-        if random_pick <= 0:
+        if random_pick < 0:
             return item
     raise ValueError('Failed to pick an item')
 
 
 def upper_bound_value(value_list, value):
+    if not value_list:
+        return None
     for i in value_list:
         if i > value:
             return i

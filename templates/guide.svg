@@ -26,9 +26,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.77823178"
-     inkscape:cx="317.97286"
-     inkscape:cy="-28.179577"
+     inkscape:zoom="2.2011719"
+     inkscape:cx="921.34122"
+     inkscape:cy="932.5571"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -36318,6 +36318,13 @@ xGmalnWKAAAAAElFTkSuQmCC
        cy="286.33514"
        cx="184.28195"
        id="ellipse2136"
+       style="opacity:1;vector-effect:none;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.17098922;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <ellipse
+       ry="11.419106"
+       rx="10.797659"
+       cy="42.87307"
+       cx="244.59924"
+       id="ellipse2198"
        style="opacity:1;vector-effect:none;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.17098922;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
   </g>
 </svg>

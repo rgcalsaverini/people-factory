@@ -22,8 +22,6 @@ european = PersonCategory(
     physical=PhysicalDescriptors(default_descriptors),
     templates=templates,
     clothing=clothing,
-    gender_ratio=0.5,
-    facial_hair=0.3,
 )
 
 european.hair.female.add(100, 'curly_fringe', [
@@ -62,3 +60,4 @@ european.facial_hair.add(150, 'corporate_beard')
 european.facial_hair.add(50, 'full_beard')
 european.facial_hair.add(150, 'moustache2')
 european.facial_hair.add(80, 'lampshade_moustache')
+european.facial_hair.add(50, 'goatee_3')

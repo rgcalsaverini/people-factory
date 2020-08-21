@@ -140,7 +140,7 @@ class Wardrobe(object):
 class PersonCategory(object):
     def __init__(self, category_name, skin_col=None, hair_col=None,
                  iris_col=None, physical=None, templates=None,
-                 gender_ratio=None, clothing=None, facial_hair=0.33):
+                 gender_ratio=None, clothing=None, facial_hair=None):
         self.category_name = category_name
         self.skin_col = skin_col
         self.hair_col = hair_col
@@ -150,7 +150,7 @@ class PersonCategory(object):
         self.templates = templates
         self.gender_ratio = gender_ratio or 0.5
         self.clothing = Wardrobe(clothing)
-        self.facial_hair = FacialHair(facial_hair)
+        self.facial_hair = FacialHair(facial_hair or 0.33)
 
     def _random_gender(self):
         if uniform_random(0, 1) < self.gender_ratio:

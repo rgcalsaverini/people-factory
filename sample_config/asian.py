@@ -26,6 +26,7 @@ asian = PersonCategory(
     ),
     templates=templates,
     clothing=clothing,
+    facial_hair=0.1
 )
 
 basic_back = [
@@ -53,3 +54,8 @@ asian.hair.male.add(100, 'buzz_cut')
 asian.hair.male.add(100, 'army')
 asian.hair.male.add(100, 'short_sides')
 asian.hair.male.add(100, 'pompadour')
+
+asian.facial_hair.add(100, 'goatee_2')
+asian.facial_hair.add(100, 'goatee_3')
+asian.facial_hair.add(50, 'under_lip_1')
+asian.facial_hair.add(10, 'light_beard1')

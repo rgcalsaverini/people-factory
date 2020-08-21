@@ -261,7 +261,7 @@ class TemplateFile(object):
         for key in alt_layers:
             alt = self.alt_layers[key]
             print(alt[2], key, selected_alt)
-            if any([k in selected_alt for k in alt[2]]):
+            if any([k in selected_alt for k in alt[2]]) or ('*' in alt[2] and len(selected_alt) > 0):
                 continue
             if random.uniform(0, 1) < alt[0]:
                 selected_alt.append(key)

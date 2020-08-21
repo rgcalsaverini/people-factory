@@ -34,15 +34,18 @@ templates = {
     'full_beard': './templates/fac_hair_8.svg',
     'moustache2': './templates/fac_hair_9.svg',
     'lampshade_moustache': './templates/fac_hair_10.svg',
+    'goatee_3': './templates/fac_hair_11.svg',
 
     'mal_pull_shirt_1': './templates/clothing/male_pro_1.svg',
     'mal_pull_shirt_2': './templates/clothing/male_pro_4.svg',
     'mal_shirt_1': './templates/clothing/male_pro_2.svg',
     'mal_shirt_2': './templates/clothing/male_pro_3.svg',
     'mal_shirt_no_tie_1': './templates/clothing/male_pro_5.svg',
+    'mal_t_shirt_1': './templates/clothing/male_inf_1.svg',
 
     'fem_pull_shirt_1': './templates/clothing/fem_pro_1.svg',
     'fem_shirt_1': './templates/clothing/fem_pro_2.svg',
+    'fem_t_shirt_1': './templates/clothing/fem_inf_1.svg',
 
     'fem_earrings_1': './templates/clothing/fem_earrings_1.svg',
     'glasses_1': './templates/clothing/glasses_1.svg',
@@ -51,7 +54,24 @@ templates = {
 
 bright_colors = ['#4d4d4d', '#0044aa', '#c83737', '#a05a2c', '#d4aa00',
                  '#44aa00', '#37abc8']
-light_colors = {0.5: '#FFFFFF', 0.66: '#d5f6ff', 0.83: '#ffd5d5', 1.0: '#f4e3d7'}
+light_colors = {0.5: '#FFFFFF', 0.66: '#d5f6ff', 0.83: '#ffd5d5',
+                1.0: '#f4e3d7'}
+
+tshirt = {
+    0.00: '#000000',
+    0.40: '#FFFFFF',
+    0.46: '#c83737',
+    0.52: '#ff8080',
+    0.58: '#ff6600',
+    0.64: '#ffcc00',
+    0.70: '#55d400',
+    0.76: '#165016',
+    0.82: '#00ccff',
+    0.88: '#0066ff',
+    0.94: '#002255',
+    1.00: '#002255',
+
+}
 
 default_descriptors = {
     'cheek': (0.3, 0.18),
@@ -126,6 +146,17 @@ clothing = [
             Gradient(jewell_colors)
         ]
     }],
+    [150, {
+        'tid': 'mal_t_shirt_1',
+        'labels': ['male', 'basic'],
+        'colors': [Gradient(tshirt), Gradient(tshirt)]
+    }],
+
+    [150, {
+        'tid': 'fem_t_shirt_1',
+        'labels': ['female', 'basic'],
+        'colors': [Gradient(tshirt), Gradient(tshirt)]
+    }],
     [100, {
         'tid': 'fem_shirt_1',
         'labels': ['female', 'basic'],
@@ -142,15 +173,14 @@ clothing = [
         'labels': ['female', 'ear'],
         'colors': [Gradient(jewell_colors)]
     }],
-    [200, {
+    [20, {
         'tid': 'glasses_1',
         'labels': ['female', 'male', 'eye'],
         'colors': []
     }],
-    [20, {
+    [100, {
         'tid': 'glasses_2',
         'labels': ['female', 'male', 'eye'],
         'colors': []
     }],
 ]
-

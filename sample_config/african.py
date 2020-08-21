@@ -57,9 +57,15 @@ african.hair.male.add(100, 'short_square', [
     [100, None],
     [100, 'afro_back_2'],
 ])
-# african.hair.male.add(100, 'dread_locks', [
-#     [100, 'small_dlocks_back'],
-# ])
-# african.hair.female.add(100, 'dread_locks', [
-#     [100, 'small_dlocks_back'],
-# ])
+
+african.facial_hair.add(50, 'moustache1')
+african.facial_hair.add(100, 'light_beard1')
+african.facial_hair.add(50, 'under_lip_1')
+african.facial_hair.add(50, 'under_lip_2')
+african.facial_hair.add(100, 'goatee_2')
+african.facial_hair.add(150, 'corporate_beard')
+african.facial_hair.add(80, 'full_beard')
+african.facial_hair.add(150, 'moustache2')
+african.facial_hair.add(50, 'lampshade_moustache')
+african.facial_hair.add(100, 'goatee_3')
+
